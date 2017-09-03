@@ -5,7 +5,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.*;
 
-public class game extends JFrame{
+public class game extends JPanel{
     public JFrame frame;
     public ImageIcon image1;
     public JLabel label1;
@@ -16,7 +16,6 @@ public class game extends JFrame{
     public JLabel label3;
     public ImageIcon image4;
     public JLabel label4;
-
 
     game(){
 
@@ -59,11 +58,11 @@ public class game extends JFrame{
 
         //WindowListener interface is used for receiving the window events.
         //WindowAdapter is an abstract adapter class for receiving window events.
-        frame.addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent windowEvent){
-                System.exit(0);
-            }
-        });
+//        frame.addWindowListener(new WindowAdapter() {
+//            public void windowClosing(WindowEvent windowEvent){
+//                System.exit(0);
+//            }
+//        });
 
         //label used for MouseListener
         label4.addMouseListener(new CustomMouseListener());

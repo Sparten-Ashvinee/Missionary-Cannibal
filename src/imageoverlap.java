@@ -1,5 +1,4 @@
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.MouseEvent;
@@ -9,14 +8,21 @@ import java.awt.event.WindowEvent;
 
 public class imageoverlap extends JPanel{
     private JLayeredPane layeredPane;
+    public JLabel label;
+    private JLabel label2;
+    private JLabel label3;
+    private JLabel label4;
+    private JLabel label5;
+    private JLabel label6;
+    private JLabel label7;
+    private JLabel label8;
     public imageoverlap(){
-
         //Create and set up the layered pane.
         layeredPane = new JLayeredPane();
         layeredPane.setPreferredSize(new Dimension(800, 500));
 
         final ImageIcon icon = createImageIcon("scenery5.png");
-        JLabel label = new JLabel(icon);
+        label = new JLabel(icon);
         label.setVerticalAlignment(JLabel.TOP);
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setOpaque(true);
@@ -26,16 +32,15 @@ public class imageoverlap extends JPanel{
         layeredPane.add(label, new Integer(0));
 
         final ImageIcon icon2 = createImageIcon("boat12.png");
-        JLabel label2 = new JLabel(icon2);
+        label2 = new JLabel(icon2);
         label2.setVerticalAlignment(JLabel.TOP);
         label2.setHorizontalAlignment(JLabel.CENTER);
         label2.setOpaque(false);
-        //decrease the value 450 to move the boat keeping all value fixed
         label2.setBounds(450, 265, 170, 70);
         layeredPane.add(label2, new Integer(3));
 
         final ImageIcon icon3 = createImageIcon("cannibal222.png");
-        JLabel label3 = new JLabel(icon3);
+        label3 = new JLabel(icon3);
         label3.setVerticalAlignment(JLabel.TOP);
         label3.setHorizontalAlignment(JLabel.CENTER);
         label3.setOpaque(false);
@@ -43,7 +48,7 @@ public class imageoverlap extends JPanel{
         layeredPane.add(label3, new Integer(2));
 
         final ImageIcon icon4 = createImageIcon("cannibal222.png");
-        JLabel label4 = new JLabel(icon4);
+        label4 = new JLabel(icon4);
         label4.setVerticalAlignment(JLabel.TOP);
         label4.setHorizontalAlignment(JLabel.CENTER);
         label4.setOpaque(false);
@@ -51,7 +56,7 @@ public class imageoverlap extends JPanel{
         layeredPane.add(label4, new Integer(2));
 
         final ImageIcon icon5 = createImageIcon("cannibal222.png");
-        JLabel label5 = new JLabel(icon5);
+        label5 = new JLabel(icon5);
         label5.setVerticalAlignment(JLabel.TOP);
         label5.setHorizontalAlignment(JLabel.CENTER);
         label5.setOpaque(false);
@@ -59,7 +64,7 @@ public class imageoverlap extends JPanel{
         layeredPane.add(label5, new Integer(3));
 
         final ImageIcon icon6 = createImageIcon("missionary222.png");
-        JLabel label6 = new JLabel(icon6);
+        label6 = new JLabel(icon6);
         label6.setVerticalAlignment(JLabel.TOP);
         label6.setHorizontalAlignment(JLabel.CENTER);
         label6.setOpaque(false);
@@ -67,7 +72,7 @@ public class imageoverlap extends JPanel{
         layeredPane.add(label6, new Integer(2));
 
         final ImageIcon icon7 = createImageIcon("missionary222.png");
-        JLabel label7 = new JLabel(icon7);
+        label7 = new JLabel(icon7);
         label7.setVerticalAlignment(JLabel.TOP);
         label7.setHorizontalAlignment(JLabel.CENTER);
         label7.setOpaque(false);
@@ -75,7 +80,7 @@ public class imageoverlap extends JPanel{
         layeredPane.add(label7, new Integer(2));
 
         final ImageIcon icon8 = createImageIcon("missionary222.png");
-        JLabel label8 = new JLabel(icon8);
+        label8 = new JLabel(icon8);
         label8.setVerticalAlignment(JLabel.TOP);
         label8.setHorizontalAlignment(JLabel.CENTER);
         label8.setOpaque(false);
@@ -83,6 +88,7 @@ public class imageoverlap extends JPanel{
         layeredPane.add(label8, new Integer(3));
 
         add(layeredPane);
+
         label2.addMouseListener(new CustomMouseListener());
         label3.addMouseListener(new CustomMouseListener());
         label4.addMouseListener(new CustomMouseListener());
@@ -106,6 +112,9 @@ public class imageoverlap extends JPanel{
         @Override
         public void mouseClicked(MouseEvent e) {
             //start animation of missionary or cannibal towards boat
+//            if(e == label2){
+//                boatanimation();
+//            }
             //start animation of missionary or cannibal towards land
             //start animation of boat from one point to another
         }
@@ -120,11 +129,13 @@ public class imageoverlap extends JPanel{
         @Override
         public void mouseEntered(MouseEvent e) {
             //changing default cursor to hand cursor
-            Cursor cursor = new Cursor(Cursor.HAND_CURSOR);
-//            label2.setCursor(cursor);
-//            label3.setCursor(cursor);
-//            label4.setCursor(cursor);
-            //image can be replaced with another image showing selection
+            label2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            label3.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            label4.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            label5.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            label6.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            label7.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            label8.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         }
         @Override
         public void mouseExited(MouseEvent e) {
@@ -138,12 +149,22 @@ public class imageoverlap extends JPanel{
 
         //Create and set up the content pane.
         JComponent newContentPane = new imageoverlap();
+
         newContentPane.setOpaque(true); //content panes must be opaque
         frame.setContentPane(newContentPane);
 
         //Display the window.
         frame.pack();
         frame.setVisible(true);
+    }
+    public  void boatanimation(){
+        int offset=10;
+        Point origin = new Point(450, 265);
+        for (int i=0; i<50; i++) {
+            origin.x += offset;
+            origin.y += offset;
+            label2.setBounds(origin.x, origin.y, 170, 70);
+        }
     }
     public static void main(String[] args) {
         //Schedule a job for the event-dispatching thread:
