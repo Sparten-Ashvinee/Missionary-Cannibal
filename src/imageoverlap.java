@@ -96,6 +96,14 @@ public class imageoverlap extends JPanel{
         label6.addMouseListener(new CustomMouseListener());
         label7.addMouseListener(new CustomMouseListener());
         label8.addMouseListener(new CustomMouseListener());
+
+        label2.setName("boat");
+        label3.setName("cannibal1");
+        label4.setName("cannibal2");
+        label5.setName("cannibal3");
+        label6.setName("missionary1");
+        label7.setName("missionary2");
+        label8.setName("missionary3");
     }
     protected static ImageIcon createImageIcon(String path) {
         java.net.URL imgURL = imageoverlap.class.getResource(path);
@@ -111,10 +119,30 @@ public class imageoverlap extends JPanel{
 
         @Override
         public void mouseClicked(MouseEvent e) {
+            javax.swing.JLabel senderName = (javax.swing.JLabel) e.getSource();
+            System.out.println(senderName.getName());
             //start animation of missionary or cannibal towards boat
-//            if(e == label2){
-//                boatanimation();
-//            }
+            if(senderName.getName().equals("boat")){
+                boatanimation("boat");
+            }
+            if(senderName.getName().equals("cannibal1")){
+                cannibalanimation("cannibal1");
+            }
+            if(senderName.getName().equals("cannibal2")){
+                cannibalanimation("cannibal2");
+            }
+            if(senderName.getName().equals("cannibal3")){
+                cannibalanimation("cannibal3");
+            }
+            if(senderName.getName().equals("missionary1")){
+                missionaryanimation("missionary1");
+            }
+            if(senderName.getName().equals("missionary2")){
+                missionaryanimation("missionary2");
+            }
+            if(senderName.getName().equals("missionary3")){
+                missionaryanimation("missionary3");
+            }
             //start animation of missionary or cannibal towards land
             //start animation of boat from one point to another
         }
@@ -144,7 +172,7 @@ public class imageoverlap extends JPanel{
     }
     private static void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("LayeredPaneDemo");
+        JFrame frame = new JFrame("Missionary and Cannibal");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Create and set up the content pane.
@@ -157,13 +185,170 @@ public class imageoverlap extends JPanel{
         frame.pack();
         frame.setVisible(true);
     }
-    public  void boatanimation(){
-        int offset=10;
-        Point origin = new Point(450, 265);
-        for (int i=0; i<50; i++) {
-            origin.x += offset;
-            origin.y += offset;
-            label2.setBounds(origin.x, origin.y, 170, 70);
+    public  void boatanimation(String c) {
+        int offset = 10, f = 0;
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        double X = point.getX();
+        if (c.equals("boat")) {
+            if (X > 450 && X < 650) {
+                Point origin = new Point(450, 265);
+                //Point origin1 = new Point(700, 200);
+                for (int i = 0; i < 27; i++) {
+                    try {
+                        Thread.sleep(10);
+                        origin.x -= offset;
+                        label2.setBounds(origin.x, 265, 170, 70);
+                        if (f == 1) {
+                            //origin1.x -= offset;
+                            label3.setBounds(origin.x, origin.y, 140, 140);
+                        }
+                        layeredPane.add(label2, new Integer(3));
+                    } catch (Exception e) {
+                    }
+                }
+            } else if (X < 355 && X > 100) {
+                Point origin = new Point(180, 265);
+                for (int i = 0; i < 27; i++) {
+                    try {
+                        Thread.sleep(10);
+                        origin.x += offset;
+                        label2.setBounds(origin.x, 265, 170, 70);
+                        layeredPane.add(label2, new Integer(3));
+                    } catch (Exception e) {
+                    }
+                }
+            }
+        }
+    }
+    public  void cannibalanimation(String c) {
+        int offset = 10,f=0;
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        double X = point.getX();
+        if (c.equals("cannibal1")) {
+            System.out.println("cannibal1");
+            f=1;
+            System.out.println("X="+X);
+            if (X > 600 && X < 800) {
+                Point origin = new Point(700, 200);
+                for (int i = 0; i < 27; i++) {
+                    try {
+                        Thread.sleep(10);
+                        origin.x -= offset;
+                        origin.y += 1.99;
+                        label3.setBounds(origin.x, origin.y, 140, 140);
+                        layeredPane.add(label3, new Integer(3));
+                    } catch (Exception e) {
+                    }
+                }
+            }
+            else if (X < 540 && X > 480){
+                System.out.println("Equals to 180");
+                Point origin = new Point(540, 200);
+                for (int i=0; i<17; i++) {
+                    try{
+                        Thread.sleep(10);
+                        origin.x += offset;
+                        origin.y-=0.1;
+                        label3.setBounds(origin.x, origin.y, 140, 140);
+                        layeredPane.add(label3, new Integer(3));
+                    }catch(Exception e){}
+                }
+            }
+        }
+        if (c.equals("cannibal2")) {
+            System.out.println("cannibal2");
+            if (X > 700 && X < 800) {
+                Point origin = new Point(665, 200);
+                for (int i = 0; i < 25; i++) {
+                    try {
+                        Thread.sleep(10);
+                        origin.x -= offset;
+                        origin.y += 1.99;
+                        label4.setBounds(origin.x, origin.y, 140, 140);
+                        layeredPane.add(label4, new Integer(3));
+                    } catch (Exception e) {
+                    }
+                }
+            }
+            else if (X < 500 && X > 450){
+                Point origin = new Point(540, 200);
+                for (int i=0; i<12; i++) {
+                    try{
+                        Thread.sleep(10);
+                        origin.x += offset;
+                        origin.y-=0.1;
+                        label4.setBounds(origin.x, origin.y, 140, 140);
+                        layeredPane.add(label4, new Integer(3));
+                    }catch(Exception e){}
+                }
+            }
+        }
+        if (c.equals("cannibal3")) {
+            double XX = point.getX();
+            System.out.println("cannibal3");
+            System.out.println("XX="+XX);
+            if (X > 700 && X < 800) {
+                Point origin = new Point(690, 230);
+                for (int i = 0; i < 25; i++) {
+                    try {
+                        Thread.sleep(10);
+                        origin.x -= offset;
+                        origin.y += 0.1;
+                        label5.setBounds(origin.x, origin.y, 140, 140);
+                        layeredPane.add(label5, new Integer(3));
+                    } catch (Exception e) {
+                    }
+                }
+            }
+            else if (X < 550 && X > 450){
+                Point origin = new Point(540, 200);
+                for (int i=0; i<15; i++) {
+                    try{
+                        Thread.sleep(10);
+                        origin.x += offset;
+                        //origin.y-=0.1;
+                        label5.setBounds(origin.x, 230, 140, 140);
+                        layeredPane.add(label5, new Integer(4));
+                    }catch(Exception e){}
+                }
+            }
+        }
+    }
+    public  void missionaryanimation(String c) {
+        int offset = 10, f = 0;
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        double X = point.getX();
+        if (c.equals("missionary1")) {
+            f = 1;
+//            System.out.println("X=" + X);
+//            if (X > 600 && X < 800) {
+//                System.out.println("Equals to 450");
+//                Point origin = new Point(700, 200);
+//                for (int i = 0; i < 27; i++) {
+//                    try {
+//                        Thread.sleep(10);
+//                        origin.x -= offset;
+//                        origin.y += 1.99;
+//                        label3.setBounds(origin.x, origin.y, 140, 140);
+//                        layeredPane.add(label3, new Integer(3));
+//                    } catch (Exception e) {
+//                    }
+//                }
+//            } else if (X < 540 && X > 480) {
+//                System.out.println("Equals to 180");
+//                Point origin = new Point(540, 200);
+//                for (int i = 0; i < 17; i++) {
+//                    try {
+//                        Thread.sleep(10);
+//                        origin.x += offset;
+//                        origin.y -= 0.1;
+//                        label3.setBounds(origin.x, origin.y, 140, 140);
+//                        layeredPane.add(label3, new Integer(3));
+//                    } catch (Exception e) {
+//                    }
+//                }
+//            }
+
         }
     }
     public static void main(String[] args) {
