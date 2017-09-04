@@ -320,34 +320,34 @@ public class imageoverlap extends JPanel{
         double X = point.getX();
         if (c.equals("missionary1")) {
             f = 1;
-//            System.out.println("X=" + X);
-//            if (X > 600 && X < 800) {
-//                System.out.println("Equals to 450");
-//                Point origin = new Point(700, 200);
-//                for (int i = 0; i < 27; i++) {
-//                    try {
-//                        Thread.sleep(10);
-//                        origin.x -= offset;
-//                        origin.y += 1.99;
-//                        label3.setBounds(origin.x, origin.y, 140, 140);
-//                        layeredPane.add(label3, new Integer(3));
-//                    } catch (Exception e) {
-//                    }
-//                }
-//            } else if (X < 540 && X > 480) {
-//                System.out.println("Equals to 180");
-//                Point origin = new Point(540, 200);
-//                for (int i = 0; i < 17; i++) {
-//                    try {
-//                        Thread.sleep(10);
-//                        origin.x += offset;
-//                        origin.y -= 0.1;
-//                        label3.setBounds(origin.x, origin.y, 140, 140);
-//                        layeredPane.add(label3, new Integer(3));
-//                    } catch (Exception e) {
-//                    }
-//                }
-//            }
+            System.out.println("X=" + X);
+            if (X > 600 && X < 800) {
+                System.out.println("Equals to 450");
+                Point origin = new Point(700, 200);
+                for (int i = 0; i < 27; i++) {
+                    try {
+                        Thread.sleep(10);
+                        origin.x -= offset;
+                        origin.y += 1.99;
+                        label3.setBounds(origin.x, origin.y, 140, 140);
+                        layeredPane.add(label3, new Integer(3));
+                    } catch (Exception e) {
+                    }
+                }
+            } else if (X < 540 && X > 480) {
+                System.out.println("Equals to 180");
+                Point origin = new Point(540, 200);
+                for (int i = 0; i < 17; i++) {
+                    try {
+                        Thread.sleep(10);
+                        origin.x += offset;
+                        origin.y -= 0.1;
+                        label3.setBounds(origin.x, origin.y, 140, 140);
+                        layeredPane.add(label3, new Integer(3));
+                    } catch (Exception e) {
+                    }
+                }
+            }
 
         }
     }
