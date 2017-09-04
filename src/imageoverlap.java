@@ -7,6 +7,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class imageoverlap extends JPanel{
+    static int 
     private JLayeredPane layeredPane;
     public JLabel label;
     private JLabel label2;
@@ -19,7 +20,7 @@ public class imageoverlap extends JPanel{
     public imageoverlap(){
         //Create and set up the layered pane.
         layeredPane = new JLayeredPane();
-        layeredPane.setPreferredSize(new Dimension(800, 500));
+        layeredPane.setPreferredSize(new Dimension(1366 , 768));
 
         final ImageIcon icon = createImageIcon("scenery5.png");
         label = new JLabel(icon);
@@ -27,8 +28,7 @@ public class imageoverlap extends JPanel{
         label.setHorizontalAlignment(JLabel.CENTER);
         label.setOpaque(true);
         Point origin = new Point(0, 0);
-        int offset = 35;
-        label.setBounds(origin.x, origin.y, 800, 500);
+        label.setBounds(origin.x, origin.y, 1366 , 768);
         layeredPane.add(label, new Integer(0));
 
         final ImageIcon icon2 = createImageIcon("boat12.png");
@@ -36,7 +36,7 @@ public class imageoverlap extends JPanel{
         label2.setVerticalAlignment(JLabel.TOP);
         label2.setHorizontalAlignment(JLabel.CENTER);
         label2.setOpaque(false);
-        label2.setBounds(450, 265, 170, 70);
+        label2.setBounds(700, 460, 170, 70);
         layeredPane.add(label2, new Integer(3));
 
         final ImageIcon icon3 = createImageIcon("cannibal222.png");
@@ -44,7 +44,7 @@ public class imageoverlap extends JPanel{
         label3.setVerticalAlignment(JLabel.TOP);
         label3.setHorizontalAlignment(JLabel.CENTER);
         label3.setOpaque(false);
-        label3.setBounds(700, 200, 140, 140);
+        label3.setBounds(1200, 430, 140, 140);
         layeredPane.add(label3, new Integer(2));
 
         final ImageIcon icon4 = createImageIcon("cannibal222.png");
@@ -52,7 +52,7 @@ public class imageoverlap extends JPanel{
         label4.setVerticalAlignment(JLabel.TOP);
         label4.setHorizontalAlignment(JLabel.CENTER);
         label4.setOpaque(false);
-        label4.setBounds(665, 200, 140, 140);
+        label4.setBounds(1250, 430, 140, 140);
         layeredPane.add(label4, new Integer(2));
 
         final ImageIcon icon5 = createImageIcon("cannibal222.png");
@@ -60,7 +60,7 @@ public class imageoverlap extends JPanel{
         label5.setVerticalAlignment(JLabel.TOP);
         label5.setHorizontalAlignment(JLabel.CENTER);
         label5.setOpaque(false);
-        label5.setBounds(690, 230, 140, 140);
+        label5.setBounds(1150, 430, 140, 140);
         layeredPane.add(label5, new Integer(3));
 
         final ImageIcon icon6 = createImageIcon("missionary222.png");
@@ -68,7 +68,7 @@ public class imageoverlap extends JPanel{
         label6.setVerticalAlignment(JLabel.TOP);
         label6.setHorizontalAlignment(JLabel.CENTER);
         label6.setOpaque(false);
-        label6.setBounds(630, 200, 140, 140);
+        label6.setBounds(1100, 430, 140, 140);
         layeredPane.add(label6, new Integer(2));
 
         final ImageIcon icon7 = createImageIcon("missionary222.png");
@@ -76,7 +76,7 @@ public class imageoverlap extends JPanel{
         label7.setVerticalAlignment(JLabel.TOP);
         label7.setHorizontalAlignment(JLabel.CENTER);
         label7.setOpaque(false);
-        label7.setBounds(600, 215, 140, 140);
+        label7.setBounds(1050, 430, 140, 140);
         layeredPane.add(label7, new Integer(2));
 
         final ImageIcon icon8 = createImageIcon("missionary222.png");
@@ -84,7 +84,7 @@ public class imageoverlap extends JPanel{
         label8.setVerticalAlignment(JLabel.TOP);
         label8.setHorizontalAlignment(JLabel.CENTER);
         label8.setOpaque(false);
-        label8.setBounds(650, 227, 140, 140);
+        label8.setBounds(1000, 430, 140, 140);
         layeredPane.add(label8, new Integer(3));
 
         add(layeredPane);
@@ -189,6 +189,7 @@ public class imageoverlap extends JPanel{
         int offset = 10, f = 0;
         Point point = MouseInfo.getPointerInfo().getLocation();
         double X = point.getX();
+        System.out.println("CO :"+X);
         if (c.equals("boat")) {
             if (X > 450 && X < 650) {
                 Point origin = new Point(450, 265);
