@@ -750,7 +750,7 @@ public class imageoverlap extends JPanel{
         if(isRight(new Point(label7.getX(),label7.getY())))missionary_count++;
         if(isRight(new Point(label8.getX(),label8.getY())))missionary_count++;
 
-        if(cannibal_count>missionary_count)
+        if((cannibal_count>missionary_count)&&(missionary_count!=0))
         {
             infoBox("Game over! The cannibals have eaten the missionaries!","Game Status");
 
@@ -772,7 +772,7 @@ public class imageoverlap extends JPanel{
         if(!isRight(new Point(label7.getX(),label7.getY())))missionary_count++;
         if(!isRight(new Point(label8.getX(),label8.getY())))missionary_count++;
 
-        if(cannibal_count>missionary_count)
+        if((cannibal_count>missionary_count)&&(missionary_count!=0))
         {
             infoBox("Game over! The cannibals have eaten the missionaries!","Game Status");
 
