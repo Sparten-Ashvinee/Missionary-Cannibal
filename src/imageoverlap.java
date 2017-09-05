@@ -5,46 +5,46 @@ import java.awt.event.MouseListener;
 
 public class imageoverlap extends JPanel{
 
-    int rider_count=0;
+   static int rider_count=0;
 
-    int boat_right_first_x =731;
-    int boat_y =440;
-    int boat_right_second_x =771;
+    static int boat_right_first_x =731;
+    static int boat_y =440;
+    static int boat_right_second_x =771;
 
-    int boat_coord_right_x=700;
-    int boat_coord_left_x=500;
-    int boat_coord_y=460;
+    static int boat_coord_right_x=700;
+    static int boat_coord_left_x=500;
+    static int boat_coord_y=460;
 
-    boolean boat_first_free=true;
-    boolean boat_second_free=true;
+    static boolean boat_first_free=true;
+    static boolean boat_second_free=true;
 
-    int common_y=430;
+    static int common_y=430;
 
-    int cannibal1_right_x=1300;
-    int cannibal2_right_x=1250;
-    int cannibal3_right_x=1200;
+    static int cannibal1_right_x=1300;
+    static int cannibal2_right_x=1250;
+    static int cannibal3_right_x=1200;
 
-    int missionary1_right_x=1150;
-    int missionary2_right_x=1100;
-    int missionary3_right_x=1050;
+    static int missionary1_right_x=1150;
+    static int missionary2_right_x=1100;
+    static int missionary3_right_x=1050;
 
-    int cannibal1_left_x=300;
-    int cannibal2_left_x=250;
-    int cannibal3_left_x=200;
+    static int cannibal1_left_x=300;
+    static int cannibal2_left_x=250;
+    static int cannibal3_left_x=200;
 
-    int missionary1_left_x=150;
-    int missionary2_left_x=100;
-    int missionary3_left_x=50;
+    static int missionary1_left_x=150;
+    static int missionary2_left_x=100;
+    static int missionary3_left_x=50;
 
-    private JLayeredPane layeredPane;
-    public JLabel label;
-    private JLabel label2;
-    private JLabel label3;
-    private JLabel label4;
-    private JLabel label5;
-    private JLabel label6;
-    private JLabel label7;
-    private JLabel label8;
+    private static JLayeredPane layeredPane;
+    public static JLabel label;
+    private static JLabel label2;
+    private static JLabel label3;
+    private static JLabel label4;
+    private static JLabel label5;
+    private static JLabel label6;
+    private static JLabel label7;
+    private static JLabel label8;
     public imageoverlap(){
         //Create and set up the layered pane.
         layeredPane = new JLayeredPane();
@@ -216,7 +216,7 @@ public class imageoverlap extends JPanel{
         int offset = 10, f = 0;
         Point point = MouseInfo.getPointerInfo().getLocation();
         double X = point.getX();
-
+        System.out.println(X);
         if(isRight(point))
         {
             if((!boat_first_free)||(!boat_second_free))
@@ -260,11 +260,46 @@ public class imageoverlap extends JPanel{
 
                 label2.setBounds(boat_coord_left_x,boat_coord_y,170,70);
                 layeredPane.add(label2,new Integer(3));
+                checkGameStatus();
             }
         }
-        else
-        {
-            
+        else {
+            if ((!boat_first_free) || (!boat_second_free)) {
+                if (!isOnLand(new Point(label3.getX(), label3.getY()))) {
+                    int temp_x = label3.getX();
+                    label3.setBounds(temp_x + 200, boat_y, 35, 59);
+                    layeredPane.add(label3, new Integer(3));
+                }
+                if (!isOnLand(new Point(label4.getX(), label4.getY()))) {
+                    int temp_x = label4.getX();
+                    label4.setBounds(temp_x + 200, boat_y, 35, 59);
+                    layeredPane.add(label4, new Integer(3));
+                }
+                if (!isOnLand(new Point(label5.getX(), label5.getY()))) {
+                    int temp_x = label5.getX();
+                    label5.setBounds(temp_x + 200, boat_y, 35, 59);
+                    layeredPane.add(label5, new Integer(3));
+                }
+                if (!isOnLand(new Point(label6.getX(), label6.getY()))) {
+                    int temp_x = label6.getX();
+                    label6.setBounds(temp_x + 200, boat_y, 32, 59);
+                    layeredPane.add(label6, new Integer(3));
+                }
+                if (!isOnLand(new Point(label7.getX(), label7.getY()))) {
+                    int temp_x = label7.getX();
+                    label7.setBounds(temp_x + 200, boat_y, 32, 59);
+                    layeredPane.add(label7, new Integer(3));
+                }
+                if (!isOnLand(new Point(label8.getX(), label8.getY()))) {
+                    int temp_x = label8.getX();
+                    label8.setBounds(temp_x + 200, boat_y, 32, 59);
+                    layeredPane.add(label8, new Integer(3));
+                }
+
+                label2.setBounds(boat_coord_right_x, boat_coord_y, 170, 70);
+                layeredPane.add(label2, new Integer(3));
+                checkGameStatus();
+            }
         }
     }
     public  void cannibal_animation(String c) {
@@ -274,108 +309,209 @@ public class imageoverlap extends JPanel{
         {
             case "cannibal1":
 
-                if(isRight(point))
+                if((isRight(new Point(label3.getX(),label3.getY()))&&(isRight(new Point(label2.getX(),label2.getY()))))||(!isRight(new Point(label3.getX(),label3.getY()))&&(!isRight(new Point(label2.getX(),label2.getY())))))
                 {
-                    if(isOnLand(point))
+                    if(isRight(point))
                     {
-                        if(boat_first_free)
+                        if(isOnLand(point))
                         {
-                            label3.setBounds(boat_right_first_x, boat_y, 35, 59);
-                            layeredPane.add(label3, new Integer(3));
-                            boat_first_free=false;
+                            if(boat_first_free)
+                            {
+                                label3.setBounds(boat_right_first_x, boat_y, 35, 59);
+                                layeredPane.add(label3, new Integer(3));
+                                boat_first_free=false;
+                            }
+                            else if(boat_second_free)
+                            {
+                                label3.setBounds(boat_right_second_x, boat_y, 35, 59);
+                                layeredPane.add(label3, new Integer(3));
+                                boat_second_free=false;
+                            }
                         }
-                        else if(boat_second_free)
+                        else
                         {
-                            label3.setBounds(boat_right_second_x, boat_y, 35, 59);
+                            int x=label3.getX();
+
+                            if(x== boat_right_first_x)boat_first_free=true;
+                            else if(x== boat_right_second_x)boat_second_free=true;
+
+                            label3.setBounds(cannibal1_right_x,common_y,35,59);
                             layeredPane.add(label3, new Integer(3));
-                            boat_second_free=false;
+
                         }
                     }
                     else
                     {
-                        int x=label3.getX();
+                        if(isOnLand(point))
+                        {
+                            if(boat_first_free)
+                            {
+                                label3.setBounds(boat_right_first_x-200, boat_y, 35, 59);
+                                layeredPane.add(label3, new Integer(3));
+                                boat_first_free=false;
+                            }
+                            else if(boat_second_free)
+                            {
+                                label3.setBounds(boat_right_second_x-200, boat_y, 35, 59);
+                                layeredPane.add(label3, new Integer(3));
+                                boat_second_free=false;
+                            }
+                        }
+                        else
+                        {
+                            int x=label3.getX();
 
-                        if(x== boat_right_first_x)boat_first_free=true;
-                        else if(x== boat_right_second_x)boat_second_free=true;
+                            if(x== boat_right_first_x-200)boat_first_free=true;
+                            else if(x== boat_right_second_x-200)boat_second_free=true;
 
-                        label3.setBounds(cannibal1_right_x,common_y,35,59);
-                        layeredPane.add(label3, new Integer(3));
+                            label3.setBounds(cannibal1_left_x,common_y,35,59);
+                            layeredPane.add(label3, new Integer(3));
 
+                        }
                     }
                 }
+
+
 
                 break;
 
             case "cannibal2":
 
-                if(isRight(point))
+                if((isRight(new Point(label4.getX(),label4.getY()))&&(isRight(new Point(label2.getX(),label2.getY()))))||(!isRight(new Point(label4.getX(),label4.getY()))&&(!isRight(new Point(label2.getX(),label2.getY())))))
                 {
-                    if(isOnLand(point))
+                    if(isRight(point))
                     {
-                        if(boat_first_free)
+                        if(isOnLand(point))
                         {
-                            label4.setBounds(boat_right_first_x, boat_y, 35, 59);
-                            layeredPane.add(label4, new Integer(3));
-                            boat_first_free=false;
+                            if(boat_first_free)
+                            {
+                                label4.setBounds(boat_right_first_x, boat_y, 35, 59);
+                                layeredPane.add(label4, new Integer(3));
+                                boat_first_free=false;
+                            }
+                            else if(boat_second_free)
+                            {
+                                label4.setBounds(boat_right_second_x, boat_y, 35, 59);
+                                layeredPane.add(label4, new Integer(3));
+                                boat_second_free=false;
+                            }
                         }
-                        else if(boat_second_free)
+                        else
                         {
-                            label4.setBounds(boat_right_second_x, boat_y, 35, 59);
+                            int x=label4.getX();
+
+                            if(x== boat_right_first_x)boat_first_free=true;
+                            else if(x== boat_right_second_x)boat_second_free=true;
+
+                            label4.setBounds(cannibal2_right_x,common_y,35,59);
                             layeredPane.add(label4, new Integer(3));
-                            boat_second_free=false;
+
                         }
                     }
                     else
                     {
-                        int x=label4.getX();
+                        if(isOnLand(point))
+                        {
+                            if(boat_first_free)
+                            {
+                                label4.setBounds(boat_right_first_x-200, boat_y, 35, 59);
+                                layeredPane.add(label4, new Integer(3));
+                                boat_first_free=false;
+                            }
+                            else if(boat_second_free)
+                            {
+                                label4.setBounds(boat_right_second_x-200, boat_y, 35, 59);
+                                layeredPane.add(label4, new Integer(3));
+                                boat_second_free=false;
+                            }
+                        }
+                        else
+                        {
+                            int x=label4.getX();
 
-                        if(x== boat_right_first_x)boat_first_free=true;
-                        else if(x== boat_right_second_x)boat_second_free=true;
+                            if(x== boat_right_first_x-200)boat_first_free=true;
+                            else if(x== boat_right_second_x-200)boat_second_free=true;
 
-                        label4.setBounds(cannibal2_right_x,common_y,35,59);
-                        layeredPane.add(label4, new Integer(3));
+                            label4.setBounds(cannibal2_left_x,common_y,35,59);
+                            layeredPane.add(label4, new Integer(3));
 
+                        }
                     }
                 }
+
+
 
                 break;
 
             case "cannibal3":
 
-                if(isRight(point))
+                if((isRight(new Point(label5.getX(),label5.getY()))&&(isRight(new Point(label2.getX(),label2.getY()))))||(!isRight(new Point(label5.getX(),label5.getY()))&&(!isRight(new Point(label2.getX(),label2.getY())))))
                 {
-                    if(isOnLand(point))
+                    if(isRight(point))
                     {
-                        if(boat_first_free)
+                        if(isOnLand(point))
                         {
-                            label5.setBounds(boat_right_first_x, boat_y, 35, 59);
-                            layeredPane.add(label5, new Integer(3));
-                            boat_first_free=false;
+                            if(boat_first_free)
+                            {
+                                label5.setBounds(boat_right_first_x, boat_y, 35, 59);
+                                layeredPane.add(label5, new Integer(3));
+                                boat_first_free=false;
+                            }
+                            else if(boat_second_free)
+                            {
+                                label5.setBounds(boat_right_second_x, boat_y, 35, 59);
+                                layeredPane.add(label5, new Integer(3));
+                                boat_second_free=false;
+                            }
                         }
-                        else if(boat_second_free)
+                        else
                         {
-                            label5.setBounds(boat_right_second_x, boat_y, 35, 59);
+                            int x=label5.getX();
+
+                            if(x== boat_right_first_x)boat_first_free=true;
+                            else if(x== boat_right_second_x)boat_second_free=true;
+
+                            label5.setBounds(cannibal3_right_x,common_y,35,59);
                             layeredPane.add(label5, new Integer(3));
-                            boat_second_free=false;
+
                         }
                     }
+
                     else
                     {
-                        int x=label5.getX();
+                        if(isOnLand(point))
+                        {
+                            if(boat_first_free)
+                            {
+                                label5.setBounds(boat_right_first_x-200, boat_y, 35, 59);
+                                layeredPane.add(label5, new Integer(3));
+                                boat_first_free=false;
+                            }
+                            else if(boat_second_free)
+                            {
+                                label5.setBounds(boat_right_second_x-200, boat_y, 35, 59);
+                                layeredPane.add(label5, new Integer(3));
+                                boat_second_free=false;
+                            }
+                        }
+                        else
+                        {
+                            int x=label5.getX();
 
-                        if(x== boat_right_first_x)boat_first_free=true;
-                        else if(x== boat_right_second_x)boat_second_free=true;
+                            if(x== boat_right_first_x-200)boat_first_free=true;
+                            else if(x== boat_right_second_x-200)boat_second_free=true;
 
-                        label5.setBounds(cannibal3_right_x,common_y,35,59);
-                        layeredPane.add(label5, new Integer(3));
+                            label5.setBounds(cannibal3_left_x,common_y,35,59);
+                            layeredPane.add(label5, new Integer(3));
 
+                        }
                     }
                 }
 
+
+
                 break;
-
         }
-
     }
     public  void missionary_animation(String c) {
         int offset = 10, f = 0;
@@ -384,69 +520,136 @@ public class imageoverlap extends JPanel{
 
         switch (c)
         {
+
             case "missionary1":
 
-                if (isRight(point))
+                if((isRight(new Point(label6.getX(),label6.getY()))&&(isRight(new Point(label2.getX(),label2.getY()))))||(!isRight(new Point(label6.getX(),label6.getY()))&&(!isRight(new Point(label2.getX(),label2.getY())))))
                 {
-                    if (isOnLand(point))
+                    if (isRight(point))
                     {
-                        if (boat_first_free)
+                        if (isOnLand(point))
                         {
-                            label6.setBounds(boat_right_first_x, boat_y, 32, 59);
-                            layeredPane.add(label6, new Integer(3));
-                            boat_first_free = false;
+                            if (boat_first_free)
+                            {
+                                label6.setBounds(boat_right_first_x, boat_y, 32, 59);
+                                layeredPane.add(label6, new Integer(3));
+                                boat_first_free = false;
+                            }
+                            else if (boat_second_free)
+                            {
+                                label6.setBounds(boat_right_second_x, boat_y, 32, 59);
+                                layeredPane.add(label6, new Integer(3));
+                                boat_second_free = false;
+                            }
                         }
-                        else if (boat_second_free)
+                        else
                         {
-                            label6.setBounds(boat_right_second_x, boat_y, 32, 59);
+                            int x = label6.getX();
+
+                            if (x == boat_right_first_x) boat_first_free = true;
+                            else if (x == boat_right_second_x) boat_second_free = true;
+
+                            label6.setBounds(missionary1_right_x, common_y, 32, 59);
                             layeredPane.add(label6, new Integer(3));
-                            boat_second_free = false;
+
                         }
                     }
                     else
                     {
-                        int x = label6.getX();
+                        if(isOnLand(point))
+                        {
+                            if(boat_first_free)
+                            {
+                                label6.setBounds(boat_right_first_x-200, boat_y, 35, 59);
+                                layeredPane.add(label6, new Integer(3));
+                                boat_first_free=false;
+                            }
+                            else if(boat_second_free)
+                            {
+                                label6.setBounds(boat_right_second_x-200, boat_y, 35, 59);
+                                layeredPane.add(label6, new Integer(3));
+                                boat_second_free=false;
+                            }
+                        }
+                        else
+                        {
+                            int x=label6.getX();
 
-                        if (x == boat_right_first_x) boat_first_free = true;
-                        else if (x == boat_right_second_x) boat_second_free = true;
+                            if(x== boat_right_first_x-200)boat_first_free=true;
+                            else if(x== boat_right_second_x-200)boat_second_free=true;
 
-                        label6.setBounds(missionary1_right_x, common_y, 32, 59);
-                        layeredPane.add(label6, new Integer(3));
+                            label6.setBounds(missionary1_left_x,common_y,35,59);
+                            layeredPane.add(label6, new Integer(3));
 
+                        }
                     }
                 }
+
+
 
                 break;
 
             case "missionary2":
 
-                if (isRight(point))
+                if((isRight(new Point(label7.getX(),label7.getY()))&&(isRight(new Point(label2.getX(),label2.getY()))))||(!isRight(new Point(label7.getX(),label7.getY()))&&(!isRight(new Point(label2.getX(),label2.getY())))))
                 {
-                    if (isOnLand(point))
+                    if (isRight(point))
                     {
-                        if (boat_first_free)
+                        if (isOnLand(point))
                         {
-                            label7.setBounds(boat_right_first_x, boat_y, 32, 59);
-                            layeredPane.add(label7, new Integer(3));
-                            boat_first_free = false;
+                            if (boat_first_free)
+                            {
+                                label7.setBounds(boat_right_first_x, boat_y, 32, 59);
+                                layeredPane.add(label7, new Integer(3));
+                                boat_first_free = false;
+                            }
+                            else if (boat_second_free)
+                            {
+                                label7.setBounds(boat_right_second_x, boat_y, 32, 59);
+                                layeredPane.add(label7, new Integer(3));
+                                boat_second_free = false;
+                            }
                         }
-                        else if (boat_second_free)
+                        else
                         {
-                            label7.setBounds(boat_right_second_x, boat_y, 32, 59);
+                            int x = label7.getX();
+
+                            if (x == boat_right_first_x) boat_first_free = true;
+                            else if (x == boat_right_second_x) boat_second_free = true;
+
+                            label7.setBounds(missionary2_right_x, common_y, 32, 59);
                             layeredPane.add(label7, new Integer(3));
-                            boat_second_free = false;
+
                         }
                     }
                     else
                     {
-                        int x = label7.getX();
+                        if(isOnLand(point))
+                        {
+                            if(boat_first_free)
+                            {
+                                label7.setBounds(boat_right_first_x-200, boat_y, 35, 59);
+                                layeredPane.add(label7, new Integer(3));
+                                boat_first_free=false;
+                            }
+                            else if(boat_second_free)
+                            {
+                                label7.setBounds(boat_right_second_x-200, boat_y, 35, 59);
+                                layeredPane.add(label7, new Integer(3));
+                                boat_second_free=false;
+                            }
+                        }
+                        else
+                        {
+                            int x=label7.getX();
 
-                        if (x == boat_right_first_x) boat_first_free = true;
-                        else if (x == boat_right_second_x) boat_second_free = true;
+                            if(x== boat_right_first_x-200)boat_first_free=true;
+                            else if(x== boat_right_second_x-200)boat_second_free=true;
 
-                        label7.setBounds(missionary2_right_x, common_y, 32, 59);
-                        layeredPane.add(label7, new Integer(3));
+                            label7.setBounds(missionary2_left_x,common_y,35,59);
+                            layeredPane.add(label7, new Integer(3));
 
+                        }
                     }
                 }
 
@@ -454,52 +657,75 @@ public class imageoverlap extends JPanel{
 
             case "missionary3":
 
-                if (isRight(point))
+                if((isRight(new Point(label8.getX(),label8.getY()))&&(isRight(new Point(label2.getX(),label2.getY()))))||(!isRight(new Point(label8.getX(),label8.getY()))&&(!isRight(new Point(label2.getX(),label2.getY())))))
                 {
-                    if (isOnLand(point))
+                    if (isRight(point))
                     {
-                        if (boat_first_free)
+                        if (isOnLand(point))
                         {
-                            label8.setBounds(boat_right_first_x, boat_y, 32, 59);
-                            layeredPane.add(label8, new Integer(3));
-                            boat_first_free = false;
+                            if (boat_first_free)
+                            {
+                                label8.setBounds(boat_right_first_x, boat_y, 32, 59);
+                                layeredPane.add(label8, new Integer(3));
+                                boat_first_free = false;
+                            }
+                            else if (boat_second_free)
+                            {
+                                label8.setBounds(boat_right_second_x, boat_y, 32, 59);
+                                layeredPane.add(label8, new Integer(3));
+                                boat_second_free = false;
+                            }
                         }
-                        else if (boat_second_free)
+                        else
                         {
-                            label8.setBounds(boat_right_second_x, boat_y, 32, 59);
+                            int x = label8.getX();
+
+                            if (x == boat_right_first_x) boat_first_free = true;
+                            else if (x == boat_right_second_x) boat_second_free = true;
+
+                            label8.setBounds(missionary3_right_x, common_y, 32, 59);
                             layeredPane.add(label8, new Integer(3));
-                            boat_second_free = false;
+
                         }
                     }
                     else
                     {
-                        int x = label8.getX();
+                        if(isOnLand(point))
+                        {
+                            if(boat_first_free)
+                            {
+                                label8.setBounds(boat_right_first_x-200, boat_y, 35, 59);
+                                layeredPane.add(label8, new Integer(3));
+                                boat_first_free=false;
+                            }
+                            else if(boat_second_free)
+                            {
+                                label8.setBounds(boat_right_second_x-200, boat_y, 35, 59);
+                                layeredPane.add(label8, new Integer(3));
+                                boat_second_free=false;
+                            }
+                        }
+                        else
+                        {
+                            int x=label8.getX();
 
-                        if (x == boat_right_first_x) boat_first_free = true;
-                        else if (x == boat_right_second_x) boat_second_free = true;
+                            if(x== boat_right_first_x-200)boat_first_free=true;
+                            else if(x== boat_right_second_x-200)boat_second_free=true;
 
-                        label8.setBounds(missionary3_right_x, common_y, 32, 59);
-                        layeredPane.add(label8, new Integer(3));
+                            label8.setBounds(missionary3_left_x,common_y,35,59);
+                            layeredPane.add(label8, new Integer(3));
 
+                        }
                     }
-                }
 
-                break;
+                    break;
+                }
         }
-    }
-    public static void main(String[] args) {
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
     }
 
     public static boolean isRight(Point p)
     {
-        if(p.getX()>600)return true;
+        if(p.getX()>680)return true;
 
         else return false;
     }
@@ -509,6 +735,79 @@ public class imageoverlap extends JPanel{
         if((p.getX()>1000)||(p.getX()<400))return true;
 
         else return false;
+    }
+
+    public static void checkGameStatus()
+    {
+        int missionary_count=0;
+        int cannibal_count=0;
+
+        if(isRight(new Point(label3.getX(),label3.getY())))cannibal_count++;
+        if(isRight(new Point(label4.getX(),label4.getY())))cannibal_count++;
+        if(isRight(new Point(label5.getX(),label5.getY())))cannibal_count++;
+
+        if(isRight(new Point(label6.getX(),label6.getY())))missionary_count++;
+        if(isRight(new Point(label7.getX(),label7.getY())))missionary_count++;
+        if(isRight(new Point(label8.getX(),label8.getY())))missionary_count++;
+
+        if(cannibal_count>missionary_count)
+        {
+            infoBox("Game over! The cannibals have eaten the missionaries!","Game Status");
+
+            javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    createAndShowGUI();
+                }
+            });
+
+        }
+
+        missionary_count=0;cannibal_count=0;
+
+        if(!isRight(new Point(label3.getX(),label3.getY())))cannibal_count++;
+        if(!isRight(new Point(label4.getX(),label4.getY())))cannibal_count++;
+        if(!isRight(new Point(label5.getX(),label5.getY())))cannibal_count++;
+
+        if(!isRight(new Point(label6.getX(),label6.getY())))missionary_count++;
+        if(!isRight(new Point(label7.getX(),label7.getY())))missionary_count++;
+        if(!isRight(new Point(label8.getX(),label8.getY())))missionary_count++;
+
+        if(cannibal_count>missionary_count)
+        {
+            infoBox("Game over! The cannibals have eaten the missionaries!","Game Status");
+
+            javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    createAndShowGUI();
+                }
+            });
+
+        }
+        else if(missionary_count+cannibal_count==6)
+        {
+            infoBox("You've managed to get them across safely!\n Congratulations!","Game Status");
+
+            javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    createAndShowGUI();
+                }
+            });
+        }
+
+    }
+
+    public static void infoBox(String infoMessage, String location)
+    {JOptionPane.showMessageDialog(null, infoMessage,location, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public static void main(String[] args) {
+        //Schedule a job for the event-dispatching thread:
+        //creating and showing this application's GUI.
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createAndShowGUI();
+            }
+        });
     }
 
 }
