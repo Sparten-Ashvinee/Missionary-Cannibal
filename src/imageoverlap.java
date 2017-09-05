@@ -220,47 +220,48 @@ public class imageoverlap extends JPanel{
         System.out.println(X);
         if(isRight(point))
         {
+            layer_count++;
             if((!boat_first_free)||(!boat_second_free))
             {
                 if(!isOnLand(new Point(label3.getX(),label3.getY())))
                 {
                     int temp_x=label3.getX();
                     label3.setBounds(temp_x-200,boat_y,35,59);
-                    layeredPane.add(label3,new Integer(3));
+                    layeredPane.add(label3,new Integer(layer_count));
                 }
                 if(!isOnLand(new Point(label4.getX(),label4.getY())))
                 {
                     int temp_x=label4.getX();
                     label4.setBounds(temp_x-200,boat_y,35,59);
-                    layeredPane.add(label4,new Integer(3));
+                    layeredPane.add(label4,new Integer(layer_count));
                 }
                 if(!isOnLand(new Point(label5.getX(),label5.getY())))
                 {
                     int temp_x=label5.getX();
                     label5.setBounds(temp_x-200,boat_y,35,59);
-                    layeredPane.add(label5,new Integer(3));
+                    layeredPane.add(label5,new Integer(layer_count));
                 }
                 if(!isOnLand(new Point(label6.getX(),label6.getY())))
                 {
                     int temp_x=label6.getX();
                     label6.setBounds(temp_x-200,boat_y,32,59);
-                    layeredPane.add(label6,new Integer(3));
+                    layeredPane.add(label6,new Integer(layer_count));
                 }
                 if(!isOnLand(new Point(label7.getX(),label7.getY())))
                 {
                     int temp_x=label7.getX();
                     label7.setBounds(temp_x-200,boat_y,32,59);
-                    layeredPane.add(label7,new Integer(3));
+                    layeredPane.add(label7,new Integer(layer_count));
                 }
                 if(!isOnLand(new Point(label8.getX(),label8.getY())))
                 {
                     int temp_x=label8.getX();
                     label8.setBounds(temp_x-200,boat_y,32,59);
-                    layeredPane.add(label8,new Integer(3));
+                    layeredPane.add(label8,new Integer(layer_count));
                 }
 
                 label2.setBounds(boat_coord_left_x,boat_coord_y,170,70);
-                layeredPane.add(label2,new Integer(3));
+                layeredPane.add(label2,new Integer(layer_count));
                 checkGameStatus();
             }
         }
@@ -269,36 +270,36 @@ public class imageoverlap extends JPanel{
                 if (!isOnLand(new Point(label3.getX(), label3.getY()))) {
                     int temp_x = label3.getX();
                     label3.setBounds(temp_x + 200, boat_y, 35, 59);
-                    layeredPane.add(label3, new Integer(3));
+                    layeredPane.add(label3, new Integer(layer_count));
                 }
                 if (!isOnLand(new Point(label4.getX(), label4.getY()))) {
                     int temp_x = label4.getX();
                     label4.setBounds(temp_x + 200, boat_y, 35, 59);
-                    layeredPane.add(label4, new Integer(3));
+                    layeredPane.add(label4, new Integer(layer_count));
                 }
                 if (!isOnLand(new Point(label5.getX(), label5.getY()))) {
                     int temp_x = label5.getX();
                     label5.setBounds(temp_x + 200, boat_y, 35, 59);
-                    layeredPane.add(label5, new Integer(3));
+                    layeredPane.add(label5, new Integer(layer_count));
                 }
                 if (!isOnLand(new Point(label6.getX(), label6.getY()))) {
                     int temp_x = label6.getX();
                     label6.setBounds(temp_x + 200, boat_y, 32, 59);
-                    layeredPane.add(label6, new Integer(3));
+                    layeredPane.add(label6, new Integer(layer_count));
                 }
                 if (!isOnLand(new Point(label7.getX(), label7.getY()))) {
                     int temp_x = label7.getX();
                     label7.setBounds(temp_x + 200, boat_y, 32, 59);
-                    layeredPane.add(label7, new Integer(3));
+                    layeredPane.add(label7, new Integer(layer_count));
                 }
                 if (!isOnLand(new Point(label8.getX(), label8.getY()))) {
                     int temp_x = label8.getX();
                     label8.setBounds(temp_x + 200, boat_y, 32, 59);
-                    layeredPane.add(label8, new Integer(3));
+                    layeredPane.add(label8, new Integer(layer_count));
                 }
 
                 label2.setBounds(boat_coord_right_x, boat_coord_y, 170, 70);
-                layeredPane.add(label2, new Integer(3));
+                layeredPane.add(label2, new Integer(layer_count));
                 checkGameStatus();
             }
         }
@@ -312,6 +313,7 @@ public class imageoverlap extends JPanel{
 
                 if((isRight(new Point(label3.getX(),label3.getY()))&&(isRight(new Point(label2.getX(),label2.getY()))))||(!isRight(new Point(label3.getX(),label3.getY()))&&(!isRight(new Point(label2.getX(),label2.getY())))))
                 {
+                    layer_count++;
                     if(isRight(point))
                     {
                         if(isOnLand(point))
@@ -319,13 +321,13 @@ public class imageoverlap extends JPanel{
                             if(boat_first_free)
                             {
                                 label3.setBounds(boat_right_first_x, boat_y, 35, 59);
-                                layeredPane.add(label3, new Integer(3));
+                                layeredPane.add(label3, new Integer(layer_count));
                                 boat_first_free=false;
                             }
                             else if(boat_second_free)
                             {
                                 label3.setBounds(boat_right_second_x, boat_y, 35, 59);
-                                layeredPane.add(label3, new Integer(3));
+                                layeredPane.add(label3, new Integer(layer_count));
                                 boat_second_free=false;
                             }
                         }
@@ -337,7 +339,7 @@ public class imageoverlap extends JPanel{
                             else if(x== boat_right_second_x)boat_second_free=true;
 
                             label3.setBounds(cannibal1_right_x,common_y,35,59);
-                            layeredPane.add(label3, new Integer(3));
+                            layeredPane.add(label3, new Integer(layer_count));
 
                         }
                     }
@@ -348,13 +350,13 @@ public class imageoverlap extends JPanel{
                             if(boat_first_free)
                             {
                                 label3.setBounds(boat_right_first_x-200, boat_y, 35, 59);
-                                layeredPane.add(label3, new Integer(3));
+                                layeredPane.add(label3, new Integer(layer_count));
                                 boat_first_free=false;
                             }
                             else if(boat_second_free)
                             {
                                 label3.setBounds(boat_right_second_x-200, boat_y, 35, 59);
-                                layeredPane.add(label3, new Integer(3));
+                                layeredPane.add(label3, new Integer(layer_count));
                                 boat_second_free=false;
                             }
                         }
@@ -366,7 +368,7 @@ public class imageoverlap extends JPanel{
                             else if(x== boat_right_second_x-200)boat_second_free=true;
 
                             label3.setBounds(cannibal1_left_x,common_y,35,59);
-                            layeredPane.add(label3, new Integer(3));
+                            layeredPane.add(label3, new Integer(layer_count));
 
                         }
                     }
@@ -380,6 +382,7 @@ public class imageoverlap extends JPanel{
 
                 if((isRight(new Point(label4.getX(),label4.getY()))&&(isRight(new Point(label2.getX(),label2.getY()))))||(!isRight(new Point(label4.getX(),label4.getY()))&&(!isRight(new Point(label2.getX(),label2.getY())))))
                 {
+                    layer_count++;
                     if(isRight(point))
                     {
                         if(isOnLand(point))
@@ -387,13 +390,13 @@ public class imageoverlap extends JPanel{
                             if(boat_first_free)
                             {
                                 label4.setBounds(boat_right_first_x, boat_y, 35, 59);
-                                layeredPane.add(label4, new Integer(3));
+                                layeredPane.add(label4, new Integer(layer_count));
                                 boat_first_free=false;
                             }
                             else if(boat_second_free)
                             {
                                 label4.setBounds(boat_right_second_x, boat_y, 35, 59);
-                                layeredPane.add(label4, new Integer(3));
+                                layeredPane.add(label4, new Integer(layer_count));
                                 boat_second_free=false;
                             }
                         }
@@ -405,7 +408,7 @@ public class imageoverlap extends JPanel{
                             else if(x== boat_right_second_x)boat_second_free=true;
 
                             label4.setBounds(cannibal2_right_x,common_y,35,59);
-                            layeredPane.add(label4, new Integer(3));
+                            layeredPane.add(label4, new Integer(layer_count));
 
                         }
                     }
@@ -416,13 +419,13 @@ public class imageoverlap extends JPanel{
                             if(boat_first_free)
                             {
                                 label4.setBounds(boat_right_first_x-200, boat_y, 35, 59);
-                                layeredPane.add(label4, new Integer(3));
+                                layeredPane.add(label4, new Integer(layer_count));
                                 boat_first_free=false;
                             }
                             else if(boat_second_free)
                             {
                                 label4.setBounds(boat_right_second_x-200, boat_y, 35, 59);
-                                layeredPane.add(label4, new Integer(3));
+                                layeredPane.add(label4, new Integer(layer_count));
                                 boat_second_free=false;
                             }
                         }
@@ -434,13 +437,11 @@ public class imageoverlap extends JPanel{
                             else if(x== boat_right_second_x-200)boat_second_free=true;
 
                             label4.setBounds(cannibal2_left_x,common_y,35,59);
-                            layeredPane.add(label4, new Integer(3));
+                            layeredPane.add(label4, new Integer(layer_count));
 
                         }
                     }
                 }
-
-
 
                 break;
 
@@ -448,6 +449,7 @@ public class imageoverlap extends JPanel{
 
                 if((isRight(new Point(label5.getX(),label5.getY()))&&(isRight(new Point(label2.getX(),label2.getY()))))||(!isRight(new Point(label5.getX(),label5.getY()))&&(!isRight(new Point(label2.getX(),label2.getY())))))
                 {
+                    layer_count++;
                     if(isRight(point))
                     {
                         if(isOnLand(point))
@@ -455,13 +457,13 @@ public class imageoverlap extends JPanel{
                             if(boat_first_free)
                             {
                                 label5.setBounds(boat_right_first_x, boat_y, 35, 59);
-                                layeredPane.add(label5, new Integer(3));
+                                layeredPane.add(label5, new Integer(layer_count));
                                 boat_first_free=false;
                             }
                             else if(boat_second_free)
                             {
                                 label5.setBounds(boat_right_second_x, boat_y, 35, 59);
-                                layeredPane.add(label5, new Integer(3));
+                                layeredPane.add(label5, new Integer(layer_count));
                                 boat_second_free=false;
                             }
                         }
@@ -473,7 +475,7 @@ public class imageoverlap extends JPanel{
                             else if(x== boat_right_second_x)boat_second_free=true;
 
                             label5.setBounds(cannibal3_right_x,common_y,35,59);
-                            layeredPane.add(label5, new Integer(3));
+                            layeredPane.add(label5, new Integer(layer_count));
 
                         }
                     }
@@ -485,13 +487,13 @@ public class imageoverlap extends JPanel{
                             if(boat_first_free)
                             {
                                 label5.setBounds(boat_right_first_x-200, boat_y, 35, 59);
-                                layeredPane.add(label5, new Integer(3));
+                                layeredPane.add(label5, new Integer(layer_count));
                                 boat_first_free=false;
                             }
                             else if(boat_second_free)
                             {
                                 label5.setBounds(boat_right_second_x-200, boat_y, 35, 59);
-                                layeredPane.add(label5, new Integer(3));
+                                layeredPane.add(label5, new Integer(layer_count));
                                 boat_second_free=false;
                             }
                         }
@@ -503,7 +505,7 @@ public class imageoverlap extends JPanel{
                             else if(x== boat_right_second_x-200)boat_second_free=true;
 
                             label5.setBounds(cannibal3_left_x,common_y,35,59);
-                            layeredPane.add(label5, new Integer(3));
+                            layeredPane.add(label5, new Integer(layer_count));
 
                         }
                     }
@@ -526,6 +528,7 @@ public class imageoverlap extends JPanel{
 
                 if((isRight(new Point(label6.getX(),label6.getY()))&&(isRight(new Point(label2.getX(),label2.getY()))))||(!isRight(new Point(label6.getX(),label6.getY()))&&(!isRight(new Point(label2.getX(),label2.getY())))))
                 {
+                    layer_count++;
                     if (isRight(point))
                     {
                         if (isOnLand(point))
@@ -533,13 +536,13 @@ public class imageoverlap extends JPanel{
                             if (boat_first_free)
                             {
                                 label6.setBounds(boat_right_first_x, boat_y, 32, 59);
-                                layeredPane.add(label6, new Integer(3));
+                                layeredPane.add(label6, new Integer(layer_count));
                                 boat_first_free = false;
                             }
                             else if (boat_second_free)
                             {
                                 label6.setBounds(boat_right_second_x, boat_y, 32, 59);
-                                layeredPane.add(label6, new Integer(3));
+                                layeredPane.add(label6, new Integer(layer_count));
                                 boat_second_free = false;
                             }
                         }
@@ -551,7 +554,7 @@ public class imageoverlap extends JPanel{
                             else if (x == boat_right_second_x) boat_second_free = true;
 
                             label6.setBounds(missionary1_right_x, common_y, 32, 59);
-                            layeredPane.add(label6, new Integer(3));
+                            layeredPane.add(label6, new Integer(layer_count));
 
                         }
                     }
@@ -562,13 +565,13 @@ public class imageoverlap extends JPanel{
                             if(boat_first_free)
                             {
                                 label6.setBounds(boat_right_first_x-200, boat_y, 35, 59);
-                                layeredPane.add(label6, new Integer(3));
+                                layeredPane.add(label6, new Integer(layer_count));
                                 boat_first_free=false;
                             }
                             else if(boat_second_free)
                             {
                                 label6.setBounds(boat_right_second_x-200, boat_y, 35, 59);
-                                layeredPane.add(label6, new Integer(3));
+                                layeredPane.add(label6, new Integer(layer_count));
                                 boat_second_free=false;
                             }
                         }
@@ -580,13 +583,11 @@ public class imageoverlap extends JPanel{
                             else if(x== boat_right_second_x-200)boat_second_free=true;
 
                             label6.setBounds(missionary1_left_x,common_y,35,59);
-                            layeredPane.add(label6, new Integer(3));
+                            layeredPane.add(label6, new Integer(layer_count));
 
                         }
                     }
                 }
-
-
 
                 break;
 
@@ -594,6 +595,7 @@ public class imageoverlap extends JPanel{
 
                 if((isRight(new Point(label7.getX(),label7.getY()))&&(isRight(new Point(label2.getX(),label2.getY()))))||(!isRight(new Point(label7.getX(),label7.getY()))&&(!isRight(new Point(label2.getX(),label2.getY())))))
                 {
+                    layer_count++;
                     if (isRight(point))
                     {
                         if (isOnLand(point))
@@ -601,13 +603,13 @@ public class imageoverlap extends JPanel{
                             if (boat_first_free)
                             {
                                 label7.setBounds(boat_right_first_x, boat_y, 32, 59);
-                                layeredPane.add(label7, new Integer(3));
+                                layeredPane.add(label7, new Integer(layer_count));
                                 boat_first_free = false;
                             }
                             else if (boat_second_free)
                             {
                                 label7.setBounds(boat_right_second_x, boat_y, 32, 59);
-                                layeredPane.add(label7, new Integer(3));
+                                layeredPane.add(label7, new Integer(layer_count));
                                 boat_second_free = false;
                             }
                         }
@@ -619,7 +621,7 @@ public class imageoverlap extends JPanel{
                             else if (x == boat_right_second_x) boat_second_free = true;
 
                             label7.setBounds(missionary2_right_x, common_y, 32, 59);
-                            layeredPane.add(label7, new Integer(3));
+                            layeredPane.add(label7, new Integer(layer_count));
 
                         }
                     }
@@ -630,13 +632,13 @@ public class imageoverlap extends JPanel{
                             if(boat_first_free)
                             {
                                 label7.setBounds(boat_right_first_x-200, boat_y, 35, 59);
-                                layeredPane.add(label7, new Integer(3));
+                                layeredPane.add(label7, new Integer(layer_count));
                                 boat_first_free=false;
                             }
                             else if(boat_second_free)
                             {
                                 label7.setBounds(boat_right_second_x-200, boat_y, 35, 59);
-                                layeredPane.add(label7, new Integer(3));
+                                layeredPane.add(label7, new Integer(layer_count));
                                 boat_second_free=false;
                             }
                         }
@@ -648,7 +650,7 @@ public class imageoverlap extends JPanel{
                             else if(x== boat_right_second_x-200)boat_second_free=true;
 
                             label7.setBounds(missionary2_left_x,common_y,35,59);
-                            layeredPane.add(label7, new Integer(3));
+                            layeredPane.add(label7, new Integer(layer_count));
 
                         }
                     }
@@ -660,6 +662,7 @@ public class imageoverlap extends JPanel{
 
                 if((isRight(new Point(label8.getX(),label8.getY()))&&(isRight(new Point(label2.getX(),label2.getY()))))||(!isRight(new Point(label8.getX(),label8.getY()))&&(!isRight(new Point(label2.getX(),label2.getY())))))
                 {
+                    layer_count++;
                     if (isRight(point))
                     {
                         if (isOnLand(point))
@@ -667,13 +670,13 @@ public class imageoverlap extends JPanel{
                             if (boat_first_free)
                             {
                                 label8.setBounds(boat_right_first_x, boat_y, 32, 59);
-                                layeredPane.add(label8, new Integer(3));
+                                layeredPane.add(label8, new Integer(layer_count));
                                 boat_first_free = false;
                             }
                             else if (boat_second_free)
                             {
                                 label8.setBounds(boat_right_second_x, boat_y, 32, 59);
-                                layeredPane.add(label8, new Integer(3));
+                                layeredPane.add(label8, new Integer(layer_count));
                                 boat_second_free = false;
                             }
                         }
@@ -685,7 +688,7 @@ public class imageoverlap extends JPanel{
                             else if (x == boat_right_second_x) boat_second_free = true;
 
                             label8.setBounds(missionary3_right_x, common_y, 32, 59);
-                            layeredPane.add(label8, new Integer(3));
+                            layeredPane.add(label8, new Integer(layer_count));
 
                         }
                     }
@@ -696,13 +699,13 @@ public class imageoverlap extends JPanel{
                             if(boat_first_free)
                             {
                                 label8.setBounds(boat_right_first_x-200, boat_y, 35, 59);
-                                layeredPane.add(label8, new Integer(3));
+                                layeredPane.add(label8, new Integer(layer_count));
                                 boat_first_free=false;
                             }
                             else if(boat_second_free)
                             {
                                 label8.setBounds(boat_right_second_x-200, boat_y, 35, 59);
-                                layeredPane.add(label8, new Integer(3));
+                                layeredPane.add(label8, new Integer(layer_count));
                                 boat_second_free=false;
                             }
                         }
@@ -714,7 +717,7 @@ public class imageoverlap extends JPanel{
                             else if(x== boat_right_second_x-200)boat_second_free=true;
 
                             label8.setBounds(missionary3_left_x,common_y,35,59);
-                            layeredPane.add(label8, new Integer(3));
+                            layeredPane.add(label8, new Integer(layer_count));
 
                         }
                     }
