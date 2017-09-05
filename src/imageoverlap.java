@@ -45,6 +45,7 @@ public class imageoverlap extends JPanel{
     private static JLabel label6;
     private static JLabel label7;
     private static JLabel label8;
+    private static int layer_count=2;
     public imageoverlap(){
         //Create and set up the layered pane.
         layeredPane = new JLayeredPane();
