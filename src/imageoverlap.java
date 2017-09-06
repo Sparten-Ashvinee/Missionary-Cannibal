@@ -5,21 +5,21 @@ import java.awt.event.MouseListener;
 
 public class imageoverlap extends JPanel{
 
-    static int rider_count=0;
+    //the coordinates of the boat seats
 
     static int boat_right_first_x =731;
     static int boat_y =440;
     static int boat_right_second_x =771;
-
+//coords of the boat itself
     static int boat_coord_right_x=700;
     static int boat_coord_left_x=500;
     static int boat_coord_y=460;
-
+//bool values that indicate whether the boat seat is filled
     static boolean boat_first_free=true;
     static boolean boat_second_free=true;
-
+//y coord for ground level
     static int common_y=430;
-
+//coords for positions of cannibals and missionaries when they are on the different banks
     static int cannibal1_right_x=1300;
     static int cannibal2_right_x=1250;
     static int cannibal3_right_x=1200;
@@ -51,7 +51,7 @@ public class imageoverlap extends JPanel{
         //Create and set up the layered pane.
         layeredPane = new JLayeredPane();
         layeredPane.setPreferredSize(new Dimension(1366 , 768));
-
+//checks if image exists, and then returns ImageIcon object
         final ImageIcon icon = createImageIcon("scenery5.png");
         label = new JLabel(icon);
         label.setVerticalAlignment(JLabel.TOP);
@@ -136,7 +136,7 @@ public class imageoverlap extends JPanel{
         label7.addMouseListener(new CustomMouseListener());
         label8.addMouseListener(new CustomMouseListener());
         label9.addMouseListener(new CustomMouseListener());
-
+//the images are represented as labels in the Jpanel
         label2.setName("boat");
         label3.setName("cannibal1");
         label4.setName("cannibal2");
