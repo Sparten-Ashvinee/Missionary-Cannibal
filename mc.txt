@@ -184,8 +184,8 @@ public class imageoverlap extends JPanel{
                 missionary_animation("missionary3");
             }
             if(senderName.getName().equals("reset_button")){
-                System.out.println("Reset");
-                reset();
+               System.out.println("Reset");
+               reset();
             }
             //start animation of missionary or cannibal towards land
             //start animation of boat from one point to another
@@ -325,13 +325,12 @@ public class imageoverlap extends JPanel{
         switch (c)
         {
             case "cannibal1":
-//checking if boat on same side as cannibal
+
                 if((isRight(new Point(label3.getX(),label3.getY()))&&(isRight(new Point(label2.getX(),label2.getY()))))||(!isRight(new Point(label3.getX(),label3.getY()))&&(!isRight(new Point(label2.getX(),label2.getY())))))
                 {
                     layer_count++;
                     if(isRight(point))
                     {
-
                         if(isOnLand(point))
                         {
                             if(boat_first_free)
@@ -674,7 +673,7 @@ public class imageoverlap extends JPanel{
 
                 break;
 
-            case "missionary3":System.out.println("Right");
+            case "missionary3":
 
                 if((isRight(new Point(label8.getX(),label8.getY()))&&(isRight(new Point(label2.getX(),label2.getY()))))||(!isRight(new Point(label8.getX(),label8.getY()))&&(!isRight(new Point(label2.getX(),label2.getY())))))
                 {
@@ -756,7 +755,7 @@ public class imageoverlap extends JPanel{
 
         else return false;
     }
-//checking for win/loss
+
     public static void checkGameStatus()
     {
         int missionary_count=0;
@@ -769,11 +768,16 @@ public class imageoverlap extends JPanel{
         if(isRight(new Point(label6.getX(),label6.getY())))missionary_count++;
         if(isRight(new Point(label7.getX(),label7.getY())))missionary_count++;
         if(isRight(new Point(label8.getX(),label8.getY())))missionary_count++;
-//if no of cannibals more than no of missionaries
+
         if((cannibal_count>missionary_count)&&(missionary_count!=0))
         {
             infoBox("Game over! The cannibals have eaten the missionaries!","Game Status");
-            reset();
+
+            javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    createAndShowGUI();
+                }
+            });
         }
 
         missionary_count=0;cannibal_count=0;
@@ -789,12 +793,22 @@ public class imageoverlap extends JPanel{
         if((cannibal_count>missionary_count)&&(missionary_count!=0))
         {
             infoBox("Game over! The cannibals have eaten the missionaries!","Game Status");
-            reset();
+
+            javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    createAndShowGUI();
+                }
+            });
         }
         else if(missionary_count+cannibal_count==6)
         {
             infoBox("You've managed to get them across safely!\n Congratulations!","Game Status");
-            reset();
+
+            javax.swing.SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    createAndShowGUI();
+                }
+            });
         }
     }
 
@@ -802,7 +816,7 @@ public class imageoverlap extends JPanel{
     {JOptionPane.showMessageDialog(null, infoMessage,location, JOptionPane.INFORMATION_MESSAGE);
     }
 
-    static public void reset(){
+    public void reset(){
         label2.setBounds(boat_coord_right_x, boat_coord_y, 170, 70);
         label3.setBounds(1300, 430, 35, 59);
         label4.setBounds(1250, 430, 35, 59);
@@ -810,8 +824,6 @@ public class imageoverlap extends JPanel{
         label6.setBounds(1150, 430, 32, 59);
         label7.setBounds(1100, 430, 32, 59);
         label8.setBounds(1050, 430, 32, 59);
-        boat_first_free=true;
-        boat_second_free=true;
     }
 
     public static void main(String[] args) {
