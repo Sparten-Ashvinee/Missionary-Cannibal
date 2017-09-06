@@ -1,8 +1,0 @@
-git stash-save --keep-index
-git-drop
-gitchekoutmaster
-gitpulloriginmaster
-
-git bash air
-git init
-git remote origin url
